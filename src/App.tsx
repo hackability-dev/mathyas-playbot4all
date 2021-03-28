@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from '@emotion/styled';
+import { useState, useEffect } from 'react';
+import { Timeline } from './Timeline';
+import { Vestire } from './Vestire';
+
+const AppStyled = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+`;
 
 function App() {
+  const [cnt, setCnt] = useState(0);
+  useEffect(() => {
+    setTimeout(() => setCnt(cnt + 1), 1000);
+  }, [cnt]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppStyled>
+      <Timeline
+        values={[
+          { active: false, color: 'red', name: 'Mattina' },
+          { active: false, color: 'blue', name: 'Pomeriggio' },
+          { active: false, color: 'green', name: 'Sera' },
+        ]}
+      />
+      <Vestire />
+    </AppStyled>
   );
 }
 
