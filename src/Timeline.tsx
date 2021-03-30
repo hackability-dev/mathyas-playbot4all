@@ -1,39 +1,21 @@
-import styled from '@emotion/styled';
-import { FC } from 'react';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
 
-const TimelineStyled = styled.div`
-  background-color: #ccc;
-  display: flex;
-  height: 60px;
-  justify-content: space-between;
-  align-items: stretch;
-  div {
-    display: grid;
-    place-content: center;
-    flex-grow: 1;
-  }
-`;
 
-const TimelineElemStyled = styled.div<{ color: string }>`
-  background-color: ${(props) => props.color};
-`;
-
-interface TimelineProps {
-  values: {
-    name: string;
-    color: string;
-    active: boolean;
-  }[];
+export const Timeline = () => {
+  return <Stepper style={{
+    padding: "24px 96px" 
+  }}>
+    <Step >
+      <StepLabel>Mattina</StepLabel>
+    </Step>
+    <Step >
+      <StepLabel>Pomeriggio</StepLabel>
+    </Step>
+    <Step >
+      <StepLabel>Sera</StepLabel>
+    </Step>
+  </Stepper>
 }
 
-export const Timeline: FC<TimelineProps> = ({ values }) => {
-  return (
-    <TimelineStyled>
-      {values.map((v, idx) => (
-        <TimelineElemStyled key={idx} color={v.color}>
-          {v.name}
-        </TimelineElemStyled>
-      ))}
-    </TimelineStyled>
-  );
-};

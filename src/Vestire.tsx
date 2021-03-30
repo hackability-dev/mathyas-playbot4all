@@ -1,59 +1,60 @@
 import styled from '@emotion/styled';
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import Card from "@material-ui/core/Card"
+import Typography from "@material-ui/core/Typography"
 
 const VStyled = styled.div`
   height: 100%;
   width: 100%;
-  background-color: #ccc;
+  background-color: white;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  .left {
-    padding: 20px;
-  }
 `;
 
-const actions = ['mutande', 'maglietta', 'pantaloni', 'calze', 'felpa'];
+const actions = ['Pippo', 'Pluto', 'Topolino', 'Silvestro', 'Titti'];
 
-export const Vestire = () => {
-  const [index, setIndex] = useState(0);
+
+const Vestire = () => {
+  const [index, setIndex] = useState(0)
   useEffect(() => {
-    setInterval(() => setIndex(index + 1), 5000);
-  }, [index]);
+    setInterval(() => setIndex(index => ++index), 3000)
+  }, [])
 
-  const filteredActions = actions.filter((_, i) => i >= index);
-
+  const filteredActions = actions.filter((_, indice) => indice >= index)
   return (
     <VStyled>
-      <div className="left">
-        <h1>Vestiti</h1>
+      <div style={{
+        paddingTop: "32px",
+        textAlign: "center"
+      }}
+      >
+        <Typography variant="h2">È ora di vestirsi:</Typography>
       </div>
-      <div className="right">
-        {filteredActions.map((a, idx) => (
-          <Timeline active={idx === 0} key={idx}>
-            <p>{a}</p>
-          </Timeline>
+
+      <div >
+        {filteredActions.map((action, idx) => (
+          <Card style={{
+            height: idx === 0 ? "448px" : "128px",
+            width: idx === 0 ? "calc(100% - 32px)" : "calc(100% - 512px)",
+            margin: idx === 0 ? "16px" : "16px 256px",
+            backgroundColor: idx === 0 ? "#0057cb" : "white",
+            display: "grid",
+            placeContent: "center",
+            borderRadius: "8px"
+          }}
+            key={idx}
+            elevation={4}>
+            <Typography style={{
+              fontSize: idx === 0 ? "128px" : "64px",
+              fontWeight: 300,
+              color: idx === 0 ? "white" : "black",
+            }}>
+              {action}
+            </Typography></Card>
         ))}
       </div>
     </VStyled>
   );
 };
 
-const TimelineStyled = styled.div<{ active: boolean }>`
-  height: 200px;
-  width: 80%;
-  margin: 10px;
-  background-color: ${(props) => {
-    if (props.active) {
-      return 'red';
-    } else {
-      return '#ccc';
-    }
-  }};
-  display: grid;
-  place-content: center;
-  color: white;
-  font-size: 40px;
-`;
-const Timeline: FC<{ active: boolean }> = ({ children, active }) => {
-  return <TimelineStyled active={active}>{children}</TimelineStyled>;
-};
+export default Vestire
