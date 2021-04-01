@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
 import { Timeline } from './Timeline';
-import { Vestire } from './Vestire';
+import Vestire from './Vestire';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const AppStyled = styled.div`
   display: grid;
@@ -9,24 +9,16 @@ const AppStyled = styled.div`
   height: 100vh;
 `;
 
-function App() {
-  const [cnt, setCnt] = useState(0);
-  useEffect(() => {
-    setTimeout(() => setCnt(cnt + 1), 1000);
-  }, [cnt]);
+const App = () => <ThemeProvider theme={createMuiTheme({
+  palette: {
+    primary: {
+      main: "#0057cb",
+    },
+  },
+})} > <AppStyled>
+    <Timeline
+    />
+    <Vestire />
+  </AppStyled></ ThemeProvider>
 
-  return (
-    <AppStyled>
-      <Timeline
-        values={[
-          { active: false, color: 'red', name: 'Mattina' },
-          { active: false, color: 'blue', name: 'Pomeriggio' },
-          { active: false, color: 'green', name: 'Sera' },
-        ]}
-      />
-      <Vestire />
-    </AppStyled>
-  );
-}
-
-export default App;
+export default App
