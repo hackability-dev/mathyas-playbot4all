@@ -11,15 +11,9 @@ const VStyled = styled.div`
   grid-template-columns: 1fr 2fr;
 `;
 
-const actions = ['Pippo', 'Pluto', 'Topolino', 'Silvestro', 'Titti'];
 
-
-const Vestire = () => {
-  const [index, setIndex] = useState(0)
-  useEffect(() => {
-    setInterval(() => setIndex(index => ++index), 3000)
-  }, [])
-
+export const Mangiare = ({ actions, index }) => {
+  
   const filteredActions = actions.filter((_, indice) => indice >= index)
   return (
     <VStyled>
@@ -28,7 +22,7 @@ const Vestire = () => {
         textAlign: "center"
       }}
       >
-        <Typography variant="h2">È ora di vestirsi:</Typography>
+        <Typography variant="h2">È ora di mangiare:</Typography>
       </div>
 
       <div >
@@ -56,5 +50,3 @@ const Vestire = () => {
     </VStyled>
   );
 };
-
-export default Vestire
