@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
 import Card from "@material-ui/core/Card"
 import Typography from "@material-ui/core/Typography"
 
@@ -24,7 +23,6 @@ export const Mangiare = ({ actions, index }) => {
       >
         <Typography variant="h2">È ora di mangiare:</Typography>
       </div>
-
       <div >
         {filteredActions.map((action, idx) => (
           <Card style={{
