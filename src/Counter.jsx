@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import {tasks} from "./tasks"
 
 const AppStyled = styled.div`
-  display: grid;
+  display: grid;©
   grid-template-rows: auto 1fr;
   height: 100vh;
 `;
@@ -25,7 +25,7 @@ function App({voices}) {
   } else {
     return <AppStyled>
         <Timeline/>
-        <Mangiare actions={tasks.mangiare} index={index - tasks.vestire.length} />
+        <Mangiare actions={tasks.mangiare} index={index - tasks.vestire.length} voices={voices}/>
       </AppStyled>;
   }
 }
