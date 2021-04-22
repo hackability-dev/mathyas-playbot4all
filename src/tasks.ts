@@ -1,10 +1,10 @@
 export const tasks = {
     "vestire": [
-        "Pippo camicia",
-        "Pluto",
-        "Topolino",
-        "Silvestro",
-        "Titti"
+        "Mutande",
+        "Pantaloni",
+        "Maglietta",
+        "Felpa",
+        "Calzini"
     ],
 
     "mangiare": [
