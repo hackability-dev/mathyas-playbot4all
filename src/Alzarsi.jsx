@@ -5,13 +5,13 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import pranzo from './images/pranzo.jpg';
+import sveglia from './images/sveglia.jpg';
 import styled from '@emotion/styled';
 
 const useStyles = makeStyles({
   media: {
-    height: 500,
-    width: 500
+    height: 400,
+    width: 300
   },
 });
 
@@ -23,7 +23,7 @@ const VStyled = styled.div`
   grid-template-columns: 1fr 2fr;
 `;
 
-export const Mangiare = ({ actions, index }) => {
+export const Alzarsi = ({ actions, index }) => {
   const classes = useStyles();
   const filteredActions = actions.filter((_, indice) => indice >= index)
 
@@ -34,7 +34,7 @@ export const Mangiare = ({ actions, index }) => {
         textAlign: "center"
         }}
         >
-            <Typography variant="h2">È ora di mangiare:</Typography>
+            <Typography variant="h2">È ora di svegliarsi:</Typography>
         </div>
         <div >
             {filteredActions.map((action, idx) => (
@@ -51,7 +51,7 @@ export const Mangiare = ({ actions, index }) => {
                 <CardActionArea>
                     <CardMedia component = "img"
                     className={classes.media}
-                    image = {pranzo}
+                    image = {sveglia}
                     title="Contemplative Reptile"
                     />
                 </CardActionArea>
