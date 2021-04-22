@@ -25,7 +25,7 @@ function init(){
   for(let i = 0; i < tasks.t.length; i++){
     act[i] = tasks.t[i].id;
     //Inizializzazione della lunghezza della prima attività da mostrare
-    if(i == 0)
+    if(i === 0)
       c=tasks.t[i].actions.length;
   }
 }
@@ -53,7 +53,6 @@ function updateCont(){
 //Ricava l'array di azioni riferite all'id dell'attività corrente
 function show_actions(id){
   let show = [];
-  let j = 0;
 
   for(let j = 0; j < tasks.t.length; j++){
     if(id === tasks.t[j].id)

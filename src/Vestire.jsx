@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
 import Card from "@material-ui/core/Card"
 import Typography from "@material-ui/core/Typography"
 
