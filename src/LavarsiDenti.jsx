@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Card from "@material-ui/core/Card"
-import Typography from "@material-ui/core/Typography"
+import Typography from "@material-ui/core/Typography";
 
 const VStyled = styled.div`
   height: 100%;
@@ -11,7 +11,7 @@ const VStyled = styled.div`
 `;
 
 
-export const Vestire = ({ actions, index }) => {
+export const LavarsiDenti = ({ actions, index }) => {
   
   const filteredActions = actions.filter((_, indice) => indice >= index);
   return (
@@ -21,7 +21,7 @@ export const Vestire = ({ actions, index }) => {
         textAlign: "center"
       }}
       >
-        <Typography variant="h2">È ora di vestirsi:</Typography>
+        <Typography variant="h2">È ora di lavarsi i denti:</Typography>
       </div>
 
       <div >
@@ -38,7 +38,7 @@ export const Vestire = ({ actions, index }) => {
             key={idx}
             elevation={4}>
             <Typography style={{
-              fontSize: idx === 0 ? "128px" : "64px",
+              fontSize: idx === 0 ? "80px" : "50px",
               fontWeight: 300,
               color: idx === 0 ? "white" : "black",
             }}>
