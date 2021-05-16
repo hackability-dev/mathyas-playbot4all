@@ -11,7 +11,7 @@ const VStyled = styled.div`
 `;
 
 
-export const Vestire = ({ actions, index, voices }) => {
+export const Displayer = ({ nome, actions, index, voices }) => {
   const filteredActions = actions.filter((_, indice) => indice >= index)
   return (
     <VStyled>
@@ -20,7 +20,7 @@ export const Vestire = ({ actions, index, voices }) => {
         textAlign: "center"
       }}
       >
-        <Typography variant="h2">È ora di vestirsi:</Typography>
+        <Typography variant="h2">È ora di {nome}:</Typography>
       </div>
       <div >
         {filteredActions.map((action, idx) => (

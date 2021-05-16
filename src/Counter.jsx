@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Timeline } from './Timeline';
-import {Vestire} from './Vestire';
-import {Mangiare} from './Mangiare'
+import {Displayer} from './Displayer';
 import { useEffect, useState } from 'react';
 import {tasks} from "./tasks"
 
@@ -18,18 +17,30 @@ function App({voices}) {
     setInterval(() => setIndex(index => ++index), 3000)
   }, [])
   useEffect(() => {
-    fetch("https://40609ad7bcc9.ngrok.io/api/tasks").then(res => {return res.json()}).then(data => {setTasks(data)})
+    fetch("https://api-mathyas.k8s.hackability.dev/api/tasks").then(res => {return res.json()}).then(data => {setTasks(data)})
   }, [])
-
+  useEffect(() => {
+    console.log(tasks)
+  }, [])
 
   if (tasks.length === 0){
     return <h1>"vuoto"</h1>
   }
+  var currentHour = new Date().getHours();
+  for (j=0; j<tasks.length; j++) {
+    if (tasks[j].start<currentHour && tasks.end[j]>currentHour) {
+      for (i = 0; i < tasks[j].length; i++){
+        return <AppStyled>
+             <Timeline/>
+              <Displayer nome={tasks[i].name} actions={tasks[i].actions} index={index} voices={voices}/>
+            </AppStyled>;
+      }      
+    }    
+  }
+  return <h1>"fine"</h1>
+
   
-  return <AppStyled>
-       <Timeline/>
-        <Vestire actions={tasks[0].actions} index={index} voices={voices}/>
-      </AppStyled>;
+
 
   // if (index < tasks.vestire.length) {
   //   return <AppStyled>
