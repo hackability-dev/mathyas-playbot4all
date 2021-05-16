@@ -19,14 +19,16 @@ function App({voices}) {
   useEffect(() => {
     fetch("https://api-mathyas.k8s.hackability.dev/api/tasks").then(res => {return res.json()}).then(data => {setTasks(data)})
   }, [])
-  useEffect(() => {
-    console.log(tasks)
+/* useEffect(() => {
+    console.log(currentHour)
   }, [])
-
+*/
   if (tasks.length === 0){
     return <h1>"vuoto"</h1>
   }
   var currentHour = new Date().getHours();
+  let j=0;
+  let i = 0;
   for (j=0; j<tasks.length; j++) {
     if (tasks[j].start<currentHour && tasks.end[j]>currentHour) {
       for (i = 0; i < tasks[j].length; i++){
