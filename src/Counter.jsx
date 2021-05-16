@@ -13,7 +13,6 @@ const AppStyled = styled.div`
 
 function App({voices}) {
   const [tasks, setTasks] = useState([])
-
   const [index, setIndex] = useState(0)
   useEffect(() => {
     setInterval(() => setIndex(index => ++index), 3000)
